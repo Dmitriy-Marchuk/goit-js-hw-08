@@ -24,7 +24,7 @@ function onFormSubmit(e) {
     e.preventDefault();
 
     if (!e.target.message.value || !e.target.email.value) {
-        Notify.failure('error');
+        Notify.failure('Error. All fields must be filled');
         return;
     }
 
