@@ -1,5 +1,5 @@
 import throttle from 'lodash.throttle';
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const refs = {
     form: document.querySelector('.feedback-form'),
@@ -23,9 +23,14 @@ setTextareaInput();
 function onFormSubmit(e) {
     e.preventDefault();
 
+    if (!e.target.message.value || !e.target.email.value) {
+        Notify.failure('error');
+        return;
+    }
+
     const dataSubmit = {
     email: e.currentTarget.email.value,
-    massage: e.currentTarget.message.value,
+    message: e.currentTarget.message.value,
     };
 
     console.log('Send form');
